@@ -4,23 +4,23 @@ import './styles.scss'
 import '../../styles/button.scss'
 
 interface ModalProps {
+  id: string | null
   description: string
-  onConfirm: () => void
+  onConfirm: (id: string) => Promise<void>
   onCancel: () => void
   onRequestClose: () => void
-  isOpen: boolean
 }
 
 export function Modal({
+  id,
   onConfirm,
-  isOpen,
   description,
   onRequestClose,
   onCancel,
 }: ModalProps) {
   return (
     <ModalRM
-      isOpen={isOpen}
+      isOpen={!!id}
       onRequestClose={onRequestClose}
       className='modal-content'
       overlayClassName='overlay'
@@ -33,9 +33,11 @@ export function Modal({
         <button className='button outlined' onClick={onCancel}>
           Cancelar
         </button>
-        <button className='alert button' onClick={onConfirm}>
-          Deletar
-        </button>
+        {id && (
+          <button className='alert button' onClick={() => onConfirm(id)}>
+            Deletar
+          </button>
+        )}
       </div>
     </ModalRM>
   )

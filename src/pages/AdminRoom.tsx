@@ -23,7 +23,7 @@ export function AdminRoom() {
   const params = useParams<RoomParams>()
   const roomId = params.id
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalId, setModalId] = useState<string | null>(null)
 
   const { title, questions } = useRoom(roomId)
 
@@ -42,9 +42,8 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
-    }
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    setModalId(null)
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -63,7 +62,9 @@ export function AdminRoom() {
     <div id='page-room'>
       <header>
         <div className='content'>
-          <img src={logoImg} alt='Askoffe' />
+          <button onClick={() => history.push('/')}>
+            <img src={logoImg} alt='Askoffe' />
+          </button>
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>
@@ -110,15 +111,15 @@ export function AdminRoom() {
                       </button>
                     </>
                   )}
-                  <button type='button' onClick={() => setIsModalOpen(true)}>
+                  <button type='button' onClick={() => setModalId(question.id)}>
                     <img src={deleteImg} alt='Remover pergunta' />
                   </button>
                 </Question>
                 <Modal
-                  isOpen={isModalOpen}
-                  onConfirm={() => handleDeleteQuestion(question.id)}
-                  onRequestClose={() => setIsModalOpen(false)}
-                  onCancel={() => setIsModalOpen(false)}
+                  id={modalId}
+                  onConfirm={handleDeleteQuestion}
+                  onRequestClose={() => setModalId(null)}
+                  onCancel={() => setModalId(null)}
                   description='Tem certeza que você deseja excluir esta pergunta?'
                 />
               </Fragment>

@@ -1,9 +1,13 @@
 <p align="center">
-  <img alt="Askoffe" src=".github/logo.svg" width="160px">
+  <img alt="Askoffe" src=".github/logo100.svg" width="160px">
 </p>
 
 <h1 align="center">
-    <img alt="Askoffe" title="Askoffe" src=".github/cover.svg" />
+    <img alt="Askoffe" title="Askoffe" src=".github/landing.png" />
+    <hr>
+    <img alt="Askoffe" title="Askoffe" src=".github/user.png" />
+    <hr>
+    <img alt="Askoffe" title="Askoffe" src=".github/admin.png" />
 </h1>
 
 <br>

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
+import backWordsImg from '../assets/images/backWords.svg'
+import logoImg from '../assets/images/logo100.svg'
 import { Button } from '../components/Button'
 import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
@@ -33,11 +33,10 @@ export function NewRoom() {
     <div id='page-auth'>
       <aside>
         <img
-          src={illustrationImg}
+          src={backWordsImg}
           alt='Ilustração simbolizando perguntas e respostas'
         />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo-real</p>
+        <p>Por Gabriel Silva</p>
       </aside>
       <main>
         <div className='main-content'>
