@@ -22,7 +22,7 @@ export function ThemeContextProvider({ children }: ThemeProviderProps) {
   }, [currentTheme])
 
   function toggleTheme() {
-    document.body.classList.remove('dark', 'light')
+    document.body.classList.remove('dark')
     document.body.classList.add(currentTheme === 'light' ? 'dark' : 'light')
 
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')

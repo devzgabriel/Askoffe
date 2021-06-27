@@ -1,7 +1,7 @@
+import Switch from 'react-switch'
 import { Moon } from '../../assets/icons/Moon'
 import { Sun } from '../../assets/icons/Sun'
 import { useTheme } from '../../hooks/useTheme'
-import Switch from 'react-switch'
 
 export function ThemeSwitch() {
   const { theme, toggleTheme } = useTheme()

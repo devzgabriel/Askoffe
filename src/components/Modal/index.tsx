@@ -1,7 +1,7 @@
 import ModalRM from 'react-modal'
 import deleteImg from '../../assets/images/delete.svg'
-import './styles.scss'
 import '../../styles/button.scss'
+import './styles.scss'
 
 interface ModalProps {
   id: string | null
