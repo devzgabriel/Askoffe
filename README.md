@@ -43,7 +43,7 @@ The app will be available for access on your browser at http://localhost:3000
 
 ## 🔖 Layout
 
-You can view the project layout through the links below:
+You can view the `old` project layout through the links below:
 
 - [Layout Web](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate)
 

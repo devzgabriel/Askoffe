@@ -11,7 +11,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import '../styles/room.scss'
-import Modal from 'react-modal'
+import { Modal } from '../components/Modal'
 
 type RoomParams = {
   id: string
@@ -28,9 +28,9 @@ export function AdminRoom() {
   const { title, questions } = useRoom(roomId)
 
   useEffect(() => {
-    if (!user) {
-      history.push('/')
-    }
+    // if (!user) {
+    //   history.push('/')
+    // }
   }, [user, history])
 
   async function handleEndRoom() {
@@ -116,27 +116,11 @@ export function AdminRoom() {
                 </Question>
                 <Modal
                   isOpen={isModalOpen}
+                  onConfirm={() => handleDeleteQuestion(question.id)}
                   onRequestClose={() => setIsModalOpen(false)}
-                  className='handleDeleteModal'
-                  closeTimeoutMS={8000}
-                  overlayClassName='overlayModal'
-                >
-                  <p>Tem certeza que você deseja excluir esta pergunta?</p>
-                  <div className='buttons'>
-                    <button
-                      className='cancelModalButton'
-                      onClick={() => setIsModalOpen(false)}
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      className='deleteModalButton'
-                      onClick={() => handleDeleteQuestion(question.id)}
-                    >
-                      Deletar
-                    </button>
-                  </div>
-                </Modal>
+                  onCancel={() => setIsModalOpen(false)}
+                  description='Tem certeza que você deseja excluir esta pergunta?'
+                />
               </Fragment>
             )
           })}

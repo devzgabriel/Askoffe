@@ -26,6 +26,10 @@ export function Home() {
   async function handleJoinRoom(event: FormEvent) {
     event.preventDefault()
 
+    if (!user) {
+      await signInWithGoogle()
+    }
+
     if (roomCode.trim() === '') {
       return
     }

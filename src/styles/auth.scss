@@ -6,7 +6,7 @@
   aside {
     flex: 7;
 
-    background: #835afd;
+    background: var(--primary-color);
     color: #fff;
 
     display: flex;
@@ -82,11 +82,11 @@
 
     p {
       font-size: 14px;
-      color: #737380;
+      color: var(--sec-text-color);
       margin-top: 16px;
 
       a {
-        color: #e559f9;
+        color: var(--secondary-color);
       }
     }
   }

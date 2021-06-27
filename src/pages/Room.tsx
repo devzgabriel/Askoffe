@@ -25,6 +25,7 @@ export function Room() {
   useEffect(() => {
     if (!user) {
       history.push('/')
+      return
     }
 
     const roomRef = database.ref(`rooms/${roomId}`)

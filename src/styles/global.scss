@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #835afd;
+  --secondary-color: #e559f9;
+  --text-color: #29292e;
+  --sec-text-color: #737380;
+  --light-background-color: #f8f8f8;
+  --dark-background-color: #333;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +15,7 @@
 
 body {
   background: #f8f8f8;
-  color: #29292e;
+  color: var(--text-color);
 }
 
 body,
