@@ -32,4 +32,11 @@
     background: var(--dark-color);
     color: var(--dark-text-color);
   }
+
+  @media (max-width: 720px) {
+    width: fit-content;
+    span {
+      display: none;
+    }
+  }
 }

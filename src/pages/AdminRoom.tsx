@@ -75,14 +75,16 @@ export function AdminRoom() {
             )}
           </button>
           <div>
-            <RoomCode code={roomId} classNames={cx({ dark: isDark })} />
-            <Button
-              isOutlined
-              onClick={handleEndRoom}
-              classNames={cx({ dark: isDark })}
-            >
-              Encerrar sala
-            </Button>
+            <div className='commands'>
+              <RoomCode code={roomId} classNames={cx({ dark: isDark })} />
+              <Button
+                isOutlined
+                onClick={handleEndRoom}
+                classNames={cx({ dark: isDark })}
+              >
+                Encerrar sala
+              </Button>
+            </div>
             <ThemeSwitch />
           </div>
         </div>

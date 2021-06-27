@@ -38,6 +38,10 @@
     &.dark {
       background: var(--dark-color);
     }
+
+    @media (max-width: 1080px) {
+      display: none;
+    }
   }
 
   main {

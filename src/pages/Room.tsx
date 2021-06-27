@@ -93,6 +93,7 @@ export function Room() {
               <img src={logoImg} alt='Askoffe' />
             )}
           </button>
+
           <div>
             <RoomCode code={roomId} classNames={cx({ dark: isDark })} />
 
