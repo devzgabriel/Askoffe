@@ -4,6 +4,7 @@ import '../styles/room-code.scss'
 
 type RoomCodeProps = {
   code: string
+  classNames?: string
 }
 
 export function RoomCode(props: RoomCodeProps) {
@@ -12,7 +13,10 @@ export function RoomCode(props: RoomCodeProps) {
   }
 
   return (
-    <button className='room-code' onClick={copyRoomCodeToClipboard}>
+    <button
+      className={`room-code ${props.classNames}`}
+      onClick={copyRoomCodeToClipboard}
+    >
       <div>
         <img src={copyImg} alt='Copy room code' />
       </div>

@@ -11,6 +11,7 @@
   &.highlighted {
     background: #eaf0ff;
     border: 1px solid var(--secondary-color);
+    box-shadow: 0px 0px 12px var(--primary-color);
 
     footer .user-info span {
       color: var(--text-color);
@@ -77,6 +78,33 @@
       &:hover {
         filter: brightness(0.7);
       }
+    }
+  }
+
+  &.dark {
+    background: var(--dark-color);
+
+    p,
+    footer span {
+      color: var(--dark-text-color);
+    }
+  }
+
+  &.dark.highlighted {
+    background: var(--dark-color);
+
+    p,
+    footer span {
+      color: var(--dark-text-color);
+    }
+  }
+
+  &.dark.answered {
+    background: var(--dark-background-color);
+
+    p,
+    footer span {
+      color: var(--dark-text-color);
     }
   }
 }

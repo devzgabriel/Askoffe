@@ -1,11 +1,15 @@
+import cx from 'classnames'
 import { FormEvent, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg'
+import secLogoImg from '../assets/images/secLogo.svg'
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
+import { ThemeSwitch } from '../components/ThemeSwitch'
 import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
+import { useTheme } from '../hooks/useTheme'
 import { database } from '../services/firebase'
 import '../styles/room.scss'
 
@@ -15,6 +19,7 @@ type RoomParams = {
 
 export function Room() {
   const { user, signInWithGoogle } = useAuth()
+  const { isDark } = useTheme()
   const params = useParams<RoomParams>()
   const history = useHistory()
   const [newQuestion, setNewQuestion] = useState('')
@@ -78,13 +83,21 @@ export function Room() {
   }
 
   return (
-    <div id='page-room'>
+    <div id='page-room' className={cx({ dark: isDark })}>
       <header>
         <div className='content'>
           <button onClick={() => history.push('/')}>
-            <img src={logoImg} alt='Askoffe' />
+            {isDark ? (
+              <img src={secLogoImg} alt='Askoffe' />
+            ) : (
+              <img src={logoImg} alt='Askoffe' />
+            )}
           </button>
-          <RoomCode code={roomId} />
+          <div>
+            <RoomCode code={roomId} classNames={cx({ dark: isDark })} />
+
+            <ThemeSwitch />
+          </div>
         </div>
       </header>
 
@@ -113,7 +126,11 @@ export function Room() {
                 <button onClick={signInWithGoogle}>faça seu login</button>.
               </span>
             )}
-            <Button type='submit' disabled={!user}>
+            <Button
+              type='submit'
+              disabled={!user}
+              classNames={cx({ dark: isDark })}
+            >
               Enviar pergunta
             </Button>
           </div>
@@ -128,6 +145,7 @@ export function Room() {
                 author={question.author}
                 isAnswered={question.isAnswered}
                 isHighlighted={question.isHighlighted}
+                classNames={cx({ dark: isDark })}
               >
                 {!question.isAnswered && (
                   <button

@@ -27,4 +27,9 @@
     font-size: 14px;
     font-weight: 500;
   }
+
+  &.dark {
+    background: var(--dark-color);
+    color: var(--dark-text-color);
+  }
 }

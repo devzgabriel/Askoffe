@@ -6,6 +6,7 @@ type ThemeProviderProps = {
 }
 type ThemeContextType = {
   theme: Theme
+  isDark: boolean
   toggleTheme: () => void
 }
 
@@ -21,13 +22,17 @@ export function ThemeContextProvider({ children }: ThemeProviderProps) {
   }, [currentTheme])
 
   function toggleTheme() {
+    document.body.classList.remove('dark', 'light')
+    document.body.classList.add(currentTheme === 'light' ? 'dark' : 'light')
+
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')
   }
   return (
     <ThemeContext.Provider
       value={{
-        theme: 'light',
+        theme: currentTheme,
         toggleTheme,
+        isDark: currentTheme === 'dark',
       }}
     >
       {children}

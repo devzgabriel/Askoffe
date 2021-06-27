@@ -34,6 +34,10 @@
       line-height: 32px;
       color: #f8f8f8;
     }
+
+    &.dark {
+      background: var(--dark-color);
+    }
   }
 
   main {
@@ -44,6 +48,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+
+    .themeSwitch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
   }
 
   .main-content {
@@ -91,6 +102,7 @@
 
       a {
         color: var(--secondary-color);
+        text-decoration: none;
       }
     }
   }
@@ -143,6 +155,17 @@
       height: 1px;
       background: var(--low-gray);
       margin-left: 16px;
+    }
+  }
+
+  &.dark {
+    background: var(--dark-color);
+
+    .main-content form input {
+      background: var(--dark-color);
+      color: var(--dark-text-color);
+      border: 0.1px dashed var(--secondary-color);
+      text-align: center;
     }
   }
 }

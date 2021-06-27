@@ -9,6 +9,7 @@ interface ModalProps {
   onConfirm: (id: string) => Promise<void>
   onCancel: () => void
   onRequestClose: () => void
+  classNames?: string
 }
 
 export function Modal({
@@ -17,12 +18,13 @@ export function Modal({
   description,
   onRequestClose,
   onCancel,
+  classNames,
 }: ModalProps) {
   return (
     <ModalRM
       isOpen={!!id}
       onRequestClose={onRequestClose}
-      className='modal-content'
+      className={`modal-content ${classNames}`}
       overlayClassName='overlay'
     >
       <div className='details'>

@@ -1,17 +1,21 @@
-import { useEffect, useState, Fragment } from 'react'
+import cx from 'classnames'
+import { Fragment, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import answerImg from '../assets/images/answer.svg'
 import checkImg from '../assets/images/check.svg'
 import deleteImg from '../assets/images/delete.svg'
 import logoImg from '../assets/images/logo.svg'
+import secLogoImg from '../assets/images/secLogo.svg'
 import { Button } from '../components/Button'
+import { Modal } from '../components/Modal'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
+import { ThemeSwitch } from '../components/ThemeSwitch'
 import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
+import { useTheme } from '../hooks/useTheme'
 import { database } from '../services/firebase'
 import '../styles/room.scss'
-import { Modal } from '../components/Modal'
 
 type RoomParams = {
   id: string
@@ -19,6 +23,7 @@ type RoomParams = {
 
 export function AdminRoom() {
   const { user } = useAuth()
+  const { isDark } = useTheme()
   const history = useHistory()
   const params = useParams<RoomParams>()
   const roomId = params.id
@@ -59,17 +64,26 @@ export function AdminRoom() {
   }
 
   return (
-    <div id='page-room'>
+    <div id='page-room' className={cx({ dark: isDark })}>
       <header>
         <div className='content'>
           <button onClick={() => history.push('/')}>
-            <img src={logoImg} alt='Askoffe' />
+            {isDark ? (
+              <img src={secLogoImg} alt='Askoffe' />
+            ) : (
+              <img src={logoImg} alt='Askoffe' />
+            )}
           </button>
           <div>
-            <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>
+            <RoomCode code={roomId} classNames={cx({ dark: isDark })} />
+            <Button
+              isOutlined
+              onClick={handleEndRoom}
+              classNames={cx({ dark: isDark })}
+            >
               Encerrar sala
             </Button>
+            <ThemeSwitch />
           </div>
         </div>
       </header>
@@ -89,6 +103,7 @@ export function AdminRoom() {
                   author={question.author}
                   isAnswered={question.isAnswered}
                   isHighlighted={question.isHighlighted}
+                  classNames={cx({ dark: isDark })}
                 >
                   {!question.isAnswered && (
                     <>
@@ -121,6 +136,7 @@ export function AdminRoom() {
                   onRequestClose={() => setModalId(null)}
                   onCancel={() => setModalId(null)}
                   description='Tem certeza que você deseja excluir esta pergunta?'
+                  classNames={cx({ dark: isDark })}
                 />
               </Fragment>
             )

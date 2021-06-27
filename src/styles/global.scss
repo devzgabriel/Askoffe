@@ -2,7 +2,9 @@
   --primary-color: #0075ff;
   --primary-gradient: linear-gradient(60deg, #010a1f 10%, #0075ff 80%);
   --secondary-color: #4a92e4;
+  --dark-color: #010a1f;
   --text-color: #29292e;
+  --dark-text-color: #f8f8f8;
   --sec-text-color: #737380;
   --light-background-color: #f8f8f8;
   --dark-background-color: #333;
@@ -18,6 +20,11 @@
 body {
   background: #f8f8f8;
   color: var(--text-color);
+
+  &.dark {
+    background: var(--dark-color);
+    color: var(--dark-text-color);
+  }
 }
 
 body,
