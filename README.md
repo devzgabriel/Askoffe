@@ -8,6 +8,11 @@
     <img alt="Askoffe" title="Askoffe" src=".github/user.png" />
     <hr>
     <img alt="Askoffe" title="Askoffe" src=".github/admin.png" />
+    <h2> Dark Version</h2>
+    <img alt="Askoffe" title="Askoffe" src=".github/askoffe-banner.png" />
+    <img alt="Askoffe" title="Askoffe" src=".github/land-dark.png" />
+    <img alt="Askoffe" title="Askoffe" src=".github/user-dark.png" />
+    <img alt="Askoffe" title="Askoffe" src=".github/admin-dark.png" />
 </h1>
 
 <br>
