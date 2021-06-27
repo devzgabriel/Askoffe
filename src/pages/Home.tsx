@@ -1,18 +1,16 @@
-import { useHistory } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
-
+import { useHistory } from 'react-router-dom'
+import googleIconImg from '../assets/images/google-icon.svg'
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
-import googleIconImg from '../assets/images/google-icon.svg'
-
-import { database } from '../services/firebase'
-
 import { Button } from '../components/Button'
 import { useAuth } from '../hooks/useAuth'
-
+import { useTheme } from '../hooks/useTheme'
+import { database } from '../services/firebase'
 import '../styles/auth.scss'
 
 export function Home() {
+  const { theme, toggleTheme } = useTheme()
   const history = useHistory()
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('')

@@ -1,15 +1,12 @@
-import { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
-
+import { FormEvent, useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg'
-
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
 import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
-
 import '../styles/room.scss'
 
 type RoomParams = {
@@ -17,12 +14,26 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const params = useParams<RoomParams>()
+  const history = useHistory()
   const [newQuestion, setNewQuestion] = useState('')
   const roomId = params.id
 
   const { title, questions } = useRoom(roomId)
+
+  useEffect(() => {
+    if (!user) {
+      history.push('/')
+    }
+
+    const roomRef = database.ref(`rooms/${roomId}`)
+    roomRef.get().then((room) => {
+      if (room.val().endedAt) {
+        history.push('/')
+      }
+    })
+  }, [user, history, roomId])
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -95,7 +106,8 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar uma pergunta,{' '}
+                <button onClick={signInWithGoogle}>faça seu login</button>.
               </span>
             )}
             <Button type='submit' disabled={!user}>
