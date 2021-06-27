@@ -34,8 +34,8 @@ This project was developed using the following technologies:
 Clone the project and access the folder.
 
 ```bash
-$ git clone git@github.com:devzgabriel/letmeAsk.git
-$ cd letmeask
+$ git clone git@github.com:devzgabriel/Askoffe.git
+$ cd Askoffe
 ```
 
 Follow the steps below:
